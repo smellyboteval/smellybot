@@ -1,0 +1,43 @@
+name: Create Issue on Push
+
+on:
+  push: 
+    branches: 
+      - main
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9 # 
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r bot/requirements.txt
+
+      - name: Generate a token
+        id: generate_token
+        uses: tibdex/github-app-token@b62528385c34dbc9f38e5f4225ac829252d1ea92
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Parse Java files
+        run: |
+          python bot/parse.py 
+
+      - name: Detect Code Smells
+        run: |
+          python bot/detect.py 
+
+      - name: Create Issue on Push
+        run: |
+          python bot/report.py ${{ github.repository }} ${{ steps.generate_token.outputs.token }}
