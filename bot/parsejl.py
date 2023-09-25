@@ -28,6 +28,7 @@ def clean_path(input_path):
         #print(output_string)
     else:
         print("Pattern not found in the input string.")
+        output_string = ""
 
     return output_string
 
