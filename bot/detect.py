@@ -11,9 +11,9 @@ classes_file = os.path.join('data_classes.csv') #'bot\data_classes.csv'
 methods_file = os.path.join('data_methods.csv') 
 
 url_dc= "https://detdataclass-dy5owqlgaq-ww.a.run.app"
-url_gc= "https://detgodclass-dy5owqlgaq-ww.a.run.app"
-url_fe= "https://detfeatureenvy-dy5owqlgaq-ww.a.run.app"
-url_lm= "https://detlongmethod-dy5owqlgaq-ww.a.run.app"
+url_gc= "https://detdataclass-dy5owqlgaq-ww.a.run.app"
+url_fe= "https://detdataclass-dy5owqlgaq-ww.a.run.app"
+url_lm= "https://detdataclass-dy5owqlgaq-ww.a.run.app"
 
 
 urls_file = {'DC': (url_dc, classes_file ), 
@@ -26,7 +26,7 @@ urls_file = {'DC': (url_dc, classes_file ),
 def get_results(url_file):
 
     resp = requests.post(url_file[0], files={'cfile': open(url_file[1] , 'rb')})
-    #print(resp.content)
+    print(resp.content)
 
     return resp
 
