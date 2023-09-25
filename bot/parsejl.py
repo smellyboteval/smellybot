@@ -132,7 +132,7 @@ def saveToFile (listOfObjs, typeOfObj, projname, mode='w', header=True):
     listOfObjs.to_csv(projname.split('/')[-1]+ "_" +typeOfObj + ".csv",  mode=mode, header=header)
 
 if __name__ == "__main__":
-    projname = 'olingo-odata' ## change to data in bot
+    projname = 'data' ## change to data in bot
     start_time = time.time()
     extractFromProject(projname)
     print('\t\tTime (seconds): ', round((time.time() - start_time)))
