@@ -84,8 +84,8 @@ def main():
             methods_df['is'+ key] = methods_df['is'+ key].astype(int) 
         #print(methods_df)
 
-    classes_df = classes_df.loc[(classes_df['isDC'] == 1) | (classes_df['isGC'] == 1)]
-    methods_df = methods_df.loc[(methods_df['isFE'] == 1) | (methods_df['isLM'] == 1)]
+    #classes_df = classes_df.loc[(classes_df['isDC'] == 1) | (classes_df['isGC'] == 1)]
+    #ethods_df = methods_df.loc[(methods_df['isFE'] == 1) | (methods_df['isLM'] == 1)]
     
     save_report(classes_df, 'class')
     save_report(methods_df, 'method')
