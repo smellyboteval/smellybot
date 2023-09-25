@@ -32,7 +32,7 @@ jobs:
 
       - name: Parse Java files
         run: |
-          python bot/parse.py 
+          python bot/parsejl.py 
 
       - name: Detect Code Smells
         run: |
