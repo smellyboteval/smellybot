@@ -116,7 +116,7 @@ def extractFromProject(projname, _extclass=True, _extrmethod=True):
     all_classes['File'] = all_classes['File'].apply(clean_path)
     all_methods['File'] = all_methods['File'].apply(clean_path)
 
-    #print(all_classes['Class name'])
+    print(all_classes)
     all_classes = all_classes.rename(columns={'Class Code': 'Code'})
     all_methods = all_methods.rename(columns={'Method Code': 'Code'})
 
