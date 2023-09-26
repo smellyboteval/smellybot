@@ -13,7 +13,8 @@ def clean_path(input_path):
     input_path = input_path.replace(".java", "\/")
     input_path = input_path.replace("..", "")
     input_path = input_path.replace(".", "-")
-    input_path = input_path.replace("\/", ".", 2)
+    input_path = input_path.replace("\/", ".", 3)
+    print(input_path)
 
     # Define a regular expression pattern to remove the first two backslashes and replace the rest with dots
     pattern = r"[^.]+\/"
@@ -22,9 +23,12 @@ def clean_path(input_path):
     match = re.search(pattern, input_path)
 
     if match:
+        
         # Extract the matched portion
         output_string = match.group(0)
+        print('output_string', output_string)
         output_string = output_string[:-1].replace("\/", ".")
+        print('output_string', output_string)
         #print(output_string)
     else:
         print("Pattern not found in the input string.")
