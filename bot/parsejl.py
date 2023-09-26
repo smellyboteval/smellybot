@@ -10,13 +10,13 @@ import glob
 
 def clean_path(input_path): 
 
-    input_path = input_path.replace(".java", "\\")
+    input_path = input_path.replace(".java", "\/")
     input_path = input_path.replace("..", "")
     input_path = input_path.replace(".", "-")
-    input_path = input_path.replace("\\", ".", 2)
+    input_path = input_path.replace("\/", ".", 2)
 
     # Define a regular expression pattern to remove the first two backslashes and replace the rest with dots
-    pattern = r"[^.]+\\"
+    pattern = r"[^.]+\/"
 
     # Use re.search to find the matched pattern in the input string
     match = re.search(pattern, input_path)
@@ -24,7 +24,7 @@ def clean_path(input_path):
     if match:
         # Extract the matched portion
         output_string = match.group(0)
-        output_string = output_string[:-1].replace("\\", ".")
+        output_string = output_string[:-1].replace("\/", ".")
         #print(output_string)
     else:
         print("Pattern not found in the input string.")
