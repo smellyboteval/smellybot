@@ -10,10 +10,10 @@ import glob
 
 def clean_path(input_path): 
 
-    input_path = input_path.replace(".java", "\/")
+    input_path = input_path.replace(".java", "/")
     input_path = input_path.replace("..", "")
     input_path = input_path.replace(".", "-")
-    input_path = input_path.replace("\/", ".", 1)
+    input_path = input_path.replace("/", ".", 2)
     #input_path = input_path.replace("\/", ".", 2)
     print(input_path)
 
