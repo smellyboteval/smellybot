@@ -13,7 +13,8 @@ def clean_path(input_path):
     input_path = input_path.replace(".java", "\/")
     input_path = input_path.replace("..", "")
     input_path = input_path.replace(".", "-")
-    input_path = input_path.replace("\/", ".", 3)
+    input_path = input_path.replace("\/", ".", 1)
+    #input_path = input_path.replace("\/", ".", 2)
     print(input_path)
 
     # Define a regular expression pattern to remove the first two backslashes and replace the rest with dots
