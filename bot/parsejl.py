@@ -33,7 +33,7 @@ def clean_path(input_path):
 
     else:
         print("Pattern not found in the input string.")
-        output_string = ""
+        output_string = input_path
 
     return output_string
 

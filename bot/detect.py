@@ -34,14 +34,55 @@ def get_results(url_file):
 def save_report(reportdf, smellytype):
 
     # Convert DataFrame to Markdown table
-    if smellytype=='class':
-        markdown_table = reportdf[['File', 'Class', 'isDC', 'isGC']].to_markdown(index=False)
-    elif smellytype=='method':
-        markdown_table = reportdf[['File', 'Method', 'isFE', 'isLM']].to_markdown(index=False)
+    #if smellytype=='class':
+    #    markdown_table = reportdf[['File', 'Class', 'isDC', 'isGC']].to_markdown(index=False)
+    #elif smellytype=='method':
+    #    markdown_table = reportdf[['File', 'Method', 'isFE', 'isLM']].to_markdown(index=False)
 
     # Save Markdown table to a txt file
-    with open(smellytype+'_smelly_report.md', 'w') as f:
-        f.write(markdown_table)
+    #with open(smellytype+'_smelly_report.md', 'w') as f:
+    #    f.write(markdown_table)
+
+    # Calculate the number of zeros and ones in 'isDC' and 'isGC' columns
+
+
+    # Convert DataFrame to Markdown table
+    if smellytype == 'class':
+
+        num_nonsmelly_dc = (reportdf['isDC'] == 0).sum()
+        num_smelly_dc = (reportdf['isDC'] == 1).sum()
+        num_nonsmelly_gc = (reportdf['isGC'] == 0).sum()
+        num_smelly_gc = (reportdf['isGC'] == 1).sum()
+
+        reportdf = reportdf.loc[(reportdf['isDC'] == 1) | (reportdf['isGC'] == 1)]
+        markdown_table = reportdf[['File', 'Class', 'isDC', 'isGC']].to_markdown(index=False)
+
+        # Save Markdown table with statistics to a txt file
+        with open(smellytype + '_smelly_report.md', 'w') as f:
+            f.write(f"Number of non-smelly classes (Data Class): {num_nonsmelly_dc}\n")
+            f.write(f"Number of smelly classes (Data Class): {num_smelly_dc}\n")
+            f.write(f"Number of non-smelly classes (God Class): {num_nonsmelly_gc}\n")
+            f.write(f"Number of smelly classes (God Class): {num_smelly_gc}\n\n")
+            f.write(markdown_table)
+
+    elif smellytype == 'method':
+        num_nonsmelly_fe = (reportdf['isFE'] == 0).sum()
+        num_smelly_fe = (reportdf['isFE'] == 1).sum()
+        num_nonsmelly_lm = (reportdf['isLM'] == 0).sum()
+        num_smelly_lm = (reportdf['isLM'] == 1).sum()
+
+        reportdf = reportdf.loc[(reportdf['isFE'] == 1) | (reportdf['isLM'] == 1)]
+        markdown_table = reportdf[['File', 'Method', 'isFE', 'isLM']].to_markdown(index=False)
+
+        # Save Markdown table with statistics to a txt file
+        with open(smellytype + '_smelly_report.md', 'w') as f:
+            f.write(f"Number of non-smelly methods (Feature Envy): {num_nonsmelly_fe}\n")
+            f.write(f"Number of smelly methods (Feature Envy): {num_smelly_fe}\n")
+            f.write(f"Number of non-smelly methods (Long Method): {num_nonsmelly_lm}\n")
+            f.write(f"Number of smelly methods (Long Method): {num_smelly_lm}\n\n")
+            f.write(markdown_table)
+
+
 
 # Define a function to clean the code
 def clean_code(code):
@@ -85,8 +126,8 @@ def main():
         #print(methods_df)
 
     print(classes_df)
-    classes_df = classes_df.loc[(classes_df['isDC'] == 1) | (classes_df['isGC'] == 1)]
-    methods_df = methods_df.loc[(methods_df['isFE'] == 1) | (methods_df['isLM'] == 1)]
+    #classes_df = classes_df.loc[(classes_df['isDC'] == 1) | (classes_df['isGC'] == 1)]
+    #methods_df = methods_df.loc[(methods_df['isFE'] == 1) | (methods_df['isLM'] == 1)]
     
     save_report(classes_df, 'class')
     save_report(methods_df, 'method')
