@@ -63,7 +63,8 @@ def save_report(reportdf, smellytype):
             f.write(f"Number of smelly classes (Data Class): {num_smelly_dc}\n")
             f.write(f"Number of non-smelly classes (God Class): {num_nonsmelly_gc}\n")
             f.write(f"Number of smelly classes (God Class): {num_smelly_gc}\n\n")
-            f.write(markdown_table)
+            if((num_smelly_dc+num_smelly_gc) > 0):
+                f.write(markdown_table)
 
     elif smellytype == 'method':
         num_nonsmelly_fe = (reportdf['isFE'] == 0).sum()
@@ -80,7 +81,8 @@ def save_report(reportdf, smellytype):
             f.write(f"Number of smelly methods (Feature Envy): {num_smelly_fe}\n")
             f.write(f"Number of non-smelly methods (Long Method): {num_nonsmelly_lm}\n")
             f.write(f"Number of smelly methods (Long Method): {num_smelly_lm}\n\n")
-            f.write(markdown_table)
+            if((num_smelly_fe+num_smelly_lm) > 0):
+                f.write(markdown_table)
 
 
 
