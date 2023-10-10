@@ -10,8 +10,8 @@ import re
 classes_file = os.path.join('data_classes.csv') #'bot\data_classes.csv'
 methods_file = os.path.join('data_methods.csv') 
 
-url_dc= "https://detdataclass-dy5owqlgaq-ww.a.run.app"
-url_gc= "https://detgodclass-dy5owqlgaq-ww.a.run.app"
+url_dc= "https://detdc-dy5owqlgaq-ww.a.run.app"
+url_gc= "https://detgc-dy5owqlgaq-ww.a.run.app"
 url_fe= "https://detfeatureenvy-dy5owqlgaq-ww.a.run.app"
 url_lm= "https://detlongmethod-dy5owqlgaq-ww.a.run.app"
 
@@ -32,19 +32,6 @@ def get_results(url_file):
 
 
 def save_report(reportdf, smellytype):
-
-    # Convert DataFrame to Markdown table
-    #if smellytype=='class':
-    #    markdown_table = reportdf[['File', 'Class', 'isDC', 'isGC']].to_markdown(index=False)
-    #elif smellytype=='method':
-    #    markdown_table = reportdf[['File', 'Method', 'isFE', 'isLM']].to_markdown(index=False)
-
-    # Save Markdown table to a txt file
-    #with open(smellytype+'_smelly_report.md', 'w') as f:
-    #    f.write(markdown_table)
-
-    # Calculate the number of zeros and ones in 'isDC' and 'isGC' columns
-
 
     # Convert DataFrame to Markdown table
     if smellytype == 'class':
