@@ -10,7 +10,7 @@ import re
 classes_file = os.path.join('data_classes.csv') #'bot\data_classes.csv'
 methods_file = os.path.join('data_methods.csv') 
 
-url_dc= "https://detdc-dy5owqlgaq-ww.a.run.app"
+url_dc= "https://detdc2-dy5owqlgaq-ww.a.run.app"
 url_gc= "https://detgc-dy5owqlgaq-ww.a.run.app"
 url_fe= "https://detfeatureenvy-dy5owqlgaq-ww.a.run.app"
 url_lm= "https://detlongmethod-dy5owqlgaq-ww.a.run.app"
