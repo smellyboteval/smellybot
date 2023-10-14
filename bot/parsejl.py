@@ -46,8 +46,9 @@ def clean_code(source_code):
       # Regular expression to remove multi-line comments
       source_code = re.sub(r'/\*.*?\*/', '', source_code, flags=re.DOTALL)
 
-      # Remove multiple spaces 
-      source_code = re.sub(r'\s+', ' ', source_code)
+      source_code = re.sub(r'[^a-zA-Z0-9+\-=()\[\];,<>{}*!&|\/~%^]', ' ', source_code)  # Replace non-letter characters with spaces
+      source_code = re.sub(r'\s+', ' ', source_code)  # Replace multiple spaces with a single space
+      source_code = source_code.strip()  # Remove leading and trailing spaces
 
     except:
        source_code = ''
@@ -133,7 +134,7 @@ def extractFromProject(projname, _extclass=True, _extrmethod=True):
     #listOfObjs.to_csv(file_name, index=False)
 
 def saveToFile (listOfObjs, typeOfObj, projname, mode='w', header=True): 
-    #listOfObjs = listOfObjs.dropna()
+    
     listOfObjs.to_csv(projname.split('/')[-1]+ "_" +typeOfObj + ".csv",  mode=mode, header=header)
 
 if __name__ == "__main__":
