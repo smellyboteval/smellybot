@@ -19,8 +19,7 @@ to use as bot:
 git add .
 git commit -m 'bot in folder'
 git push
-ujk
-
+tht
 ----
 git init
 git add README.md
