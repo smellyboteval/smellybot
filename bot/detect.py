@@ -86,13 +86,13 @@ def main():
     classes_df = pd.read_csv(classes_file)
     methods_df = pd.read_csv(methods_file)
 
-    classes_df = classes_df.dropna()
-    methods_df = methods_df.dropna()
+    #classes_df = classes_df.dropna(subset=['Code']).reset_index(drop=True)
+    #methods_df = methods_df.dropna(subset=['Code']).reset_index(drop=True)
 
     # Apply the cleaning function to the 'code' column
     classes_df['Code'] = classes_df['Code'].apply(clean_code)
     methods_df['Code'] = methods_df['Code'].apply(clean_code)
-
+    print(classes_df['Code'])
     #classes_df.to_csv('clean_classes.csv')
     #methods_df.to_csv('clean_methods.csv')
 
@@ -115,8 +115,6 @@ def main():
         #print(methods_df)
 
     print(classes_df)
-    #classes_df = classes_df.loc[(classes_df['isDC'] == 1) | (classes_df['isGC'] == 1)]
-    #methods_df = methods_df.loc[(methods_df['isFE'] == 1) | (methods_df['isLM'] == 1)]
     
     save_report(classes_df, 'class')
     save_report(methods_df, 'method')

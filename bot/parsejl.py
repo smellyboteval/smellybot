@@ -1,6 +1,7 @@
 import os
 import time
 import pandas as pd
+import numpy as np
 from pathlib import Path
 from multiprocessing import Pool
 import Parse.javalangeparser as Extractor
@@ -32,7 +33,7 @@ def clean_path(input_path):
         print('output_string', output_string)
 
     else:
-        print("Pattern not found in the input string.")
+        #print("Pattern not found in the input string.")
         output_string = input_path
 
     return output_string
@@ -134,7 +135,8 @@ def extractFromProject(projname, _extclass=True, _extrmethod=True):
     #listOfObjs.to_csv(file_name, index=False)
 
 def saveToFile (listOfObjs, typeOfObj, projname, mode='w', header=True): 
-    
+    listOfObjs['Code'].replace('', np.nan, inplace=True)
+    listOfObjs = listOfObjs.dropna(subset=['Code']).reset_index(drop=True)
     listOfObjs.to_csv(projname.split('/')[-1]+ "_" +typeOfObj + ".csv",  mode=mode, header=header)
 
 if __name__ == "__main__":
