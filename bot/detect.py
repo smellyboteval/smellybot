@@ -92,7 +92,7 @@ def main():
     # Apply the cleaning function to the 'code' column
     classes_df['Code'] = classes_df['Code'].apply(clean_code)
     methods_df['Code'] = methods_df['Code'].apply(clean_code)
-    print(classes_df['Code'])
+    #print(classes_df['Code'])
     #classes_df.to_csv('clean_classes.csv')
     #methods_df.to_csv('clean_methods.csv')
 
@@ -114,7 +114,7 @@ def main():
             methods_df['is'+ key] = methods_df['is'+ key].astype(int) 
         #print(methods_df)
 
-    print(classes_df)
+    #print(classes_df)
     
     save_report(classes_df, 'class')
     save_report(methods_df, 'method')
