@@ -77,7 +77,7 @@ def save_report(reportdf, smellytype):
 
 
 
-# Define a function to clean the codetj
+# Define a function to clean the code
 def clean_code(code):
     cleaned_code = re.sub(r'[^a-zA-Z0-9+\-=()\[\];,<>{}*!&|\/~%^]', ' ', code)  # Replace non-letter characters with spaces
     cleaned_code = re.sub(r'\s+', ' ', cleaned_code)  # Replace multiple spaces with a single space
