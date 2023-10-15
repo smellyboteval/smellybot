@@ -10,20 +10,21 @@ import time
 
 #classes_file = os.path.join('data_classes.csv') #'bot\data_classes.csv'
 #methods_file = os.path.join('data_methods.csv') 
-classes_file = 'class'
-methods_file = 'method'
+classes_file = 'data_classes'
+methods_file = 'data_methods'
 
-url_dc= "https://detdc-dy5owqlgaq-ww.a.run.app" 
-url_gc= "https://detgc-dy5owqlgaq-ww.a.run.app"
+url_dc= "https://detfe-dy5owqlgaq-ww.a.run.app" #"https://detdc-dy5owqlgaq-ww.a.run.app" 
+url_gc= "https://detlm-dy5owqlgaq-ww.a.run.app" #"https://detgc-dy5owqlgaq-ww.a.run.app"
 url_fe= "https://detfe-dy5owqlgaq-ww.a.run.app"
 url_lm= "https://detlm-dy5owqlgaq-ww.a.run.app"
 
 
-urls_file_class = {'DC': (url_dc, classes_file ), 
-             'GC': (url_gc, classes_file) }
-
-urls_file_method = { 'FE': (url_fe, methods_file), 
+urls_file = {'DC': (url_dc, classes_file ), 
+             'GC': (url_gc, classes_file), 
+             'FE': (url_fe, methods_file), 
              'LM': (url_lm, methods_file)}
+
+
 
 def get_results(url, file):
 
@@ -84,75 +85,52 @@ def clean_code(code):
     return cleaned_code.strip()  # Remove leading and trailing spaces
 
 
-def detect_classes(df, file_path):
-
-    for key in urls_file_class.keys():
-
-        print(key, '->', urls_file_class[key])
-        level = urls_file_class[key]
-        url = urls_file_class[key][0]
-
-        print(level, url)
-        resp = get_results(url, file_path)
-        print(resp)
-        result = resp.json()
-        
-        df['is'+ key] = list(result.values())[0]
-        df['is'+ key] = df['is'+ key].astype(int) 
-
-    return df
-
-def detect_methods(df, file_path):
-
-    for key in urls_file_method.keys():
-
-        print(key, '->', urls_file_method[key])
-        level = urls_file_method[key]
-        url = urls_file_method[key][0]
-
-        print(level, url)
-        resp = get_results(url, file_path)
-        print(resp)
-        result = resp.json()
-
-        df['is'+ key] = list(result.values())[0]
-        df['is'+ key] = df['is'+ key].astype(int)
-
-    return df
 
 def main():
-  
+
+
+    csv_directory = os.getcwd()
     classes_df = pd.DataFrame()
     methods_df = pd.DataFrame()
 
-    # Get a list of all CSV files in the directory
-    csv_directory = os.getcwd()
-    csv_files = [filename for filename in os.listdir(csv_directory) if filename.startswith('data') and filename.endswith('.csv')]
-    print(csv_files)
+    for key in urls_file.keys():
 
-    # Loop through the list of CSV files
-    for filename in csv_files:
-        print(filename)
-        # Create the full file path
-        file_path = os.path.join(csv_directory, filename)
-        
-        df = pd.read_csv(file_path)
-        df['Code'] = df['Code'].apply(clean_code)
+        print(key, '->', urls_file[key])
+        file = urls_file[key]
+        url = urls_file[key][0]
 
-        if 'classes' in filename:
-            c_df = detect_classes(df, file_path)
-            classes_df = classes_df.append(c_df, ignore_index=True)
-        elif 'methods' in filename: 
-            m_df = detect_methods(df, file_path)
-            methods_df = methods_df.append(m_df, ignore_index=True)
+        # Get a list of all CSV files in the directory
+        csv_files = [filename for filename in os.listdir(csv_directory) if filename.startswith(file) and filename.endswith('.csv')]
+        print(csv_files)
 
+        # Loop through the list of CSV files
+        for filename in csv_files:
+            # Create the full file path
+            file_path = os.path.join(csv_directory, filename)
+            
+            df = pd.read_csv(file_path)
+            df['Code'] = df['Code'].apply(clean_code)
+            
+            resp = get_results(url, file_path)
+            print(resp)
+            result = resp.json()
+
+            if key in ['DC', 'GC']:
+                df['is'+ key] = list(result.values())[0]
+                df['is'+ key] = df['is'+ key].astype(int) 
+                classes_df = classes_df.append(df, ignore_index=True)
+            elif key in ['FE', 'LM']:
+                df['is'+ key] = list(result.values())[0]
+                df['is'+ key] = df['is'+ key].astype(int)
+                methods_df = methods_df.append(df, ignore_index=True)
+            
             time.sleep(2)
 
-        print(classes_df)
-        print(methods_df)
+    #print(classes_df)
+    #print(methods_df)
 
-    save_report(classes_df[['File', 'Class', 'isDC', 'isGC']], 'class')
-    save_report(methods_df[['File', 'Method', 'isFE', 'isLM']], 'method')
+    save_report(classes_df, 'class')
+    save_report(methods_df, 'method')
 
 
 if __name__ == "__main__":
