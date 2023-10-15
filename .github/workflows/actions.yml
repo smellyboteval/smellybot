@@ -30,14 +30,6 @@ jobs:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
 
-      - name: Parse Java files
-        run: |
-          python bot/parsejl.py 
-
-      - name: Detect Code Smells
-        run: |
-          python bot/detect.py 
-      
       - name: Create Issue on Push
         run: |
           python bot/report.py ${{ github.repository }} ${{ steps.generate_token.outputs.token }}
