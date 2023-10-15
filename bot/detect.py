@@ -11,8 +11,8 @@ import time
 classes_file = os.path.join('data_classes.csv') #'bot\data_classes.csv'
 methods_file = os.path.join('data_methods.csv') 
 
-url_dc= "https://detdc-dy5owqlgaq-ww.a.run.app" 
-url_gc= "https://detgc-dy5owqlgaq-ww.a.run.app"
+url_dc= "https://detfe-dy5owqlgaq-ww.a.run.app" #"https://detdc-dy5owqlgaq-ww.a.run.app" 
+url_gc= "https://detlm-dy5owqlgaq-ww.a.run.app" #"https://detgc-dy5owqlgaq-ww.a.run.app"
 url_fe= "https://detfe-dy5owqlgaq-ww.a.run.app"
 url_lm= "https://detlm-dy5owqlgaq-ww.a.run.app"
 
