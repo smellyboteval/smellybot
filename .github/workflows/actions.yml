@@ -34,10 +34,13 @@ jobs:
         run: |
           python bot/parsejl.py 
 
-      - name: Detect Code Smells
+      - name: Detect Code Smells class-level
         run: |
-          python bot/detect.py 
-
+          python bot/detectc.py 
+      - name: Detect Code Smells method-level
+        run: |
+          python bot/detectm.py 
+      
       - name: Create Issue on Push
         run: |
           python bot/report.py ${{ github.repository }} ${{ steps.generate_token.outputs.token }}
