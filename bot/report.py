@@ -1,9 +1,13 @@
 import requests
 import sys
 
+import logging
+import logging.handlers
+import pandas as pd
 
-def create_issue(url, payload, headers, files=None):
-    response = requests.post(url, json=payload, headers=headers, files=files)
+
+def create_issue(url, payload, headers):
+    response = requests.post(url, json=payload, headers=headers)
 
     if response.status_code == 201:
         print("Comment posted successfully!")
@@ -41,22 +45,49 @@ def main():
     }
 
     payload_class = issue_data('class')
-    #create_issue(url, payload_class, headers)
-    try:
-        csv_file_path = 'class_results.txt'
-        files={'csv_attachment': (csv_file_path, open(csv_file_path, 'rb'))}
-    except:
-        files=None
-    create_issue(url, payload_class, headers, files=files )
+    create_issue(url, payload_class, headers)
+    #try:
+    #    csv_file_path = 'class_results.csv'
+    #    files={'csv_attachment': (csv_file_path, open(csv_file_path, 'rb'))}
+    #except:
+    #    files=None
+    #create_issue(url, payload_class, headers, files=files )
 
     payload_method = issue_data('method')
-    #create_issue(url, payload_method, headers)
+    create_issue(url, payload_method, headers)
+    #try:
+    #    csv_file_path = 'method_results.csv'
+    #    files={'csv_attachment': (csv_file_path, open(csv_file_path, 'rb'))}
+    #except:
+    #    files=None
+    #create_issue(url, payload_method, headers, files=files )
+
+
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+    logger_file_handler = logging.handlers.RotatingFileHandler(
+        "smelly_classes.log",
+        maxBytes=1024 * 1024,
+        backupCount=1,
+        encoding="utf8",
+    )
+    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+    logger_file_handler.setFormatter(formatter)
+    logger.addHandler(logger_file_handler)
+
+    # Read the CSV file
+    csv_file = 'class_results.csv'
     try:
-        csv_file_path = 'method_results.txt'
-        files={'csv_attachment': (csv_file_path, open(csv_file_path, 'rb'))}
-    except:
-        files=None
-    create_issue(url, payload_method, headers, files=files )
+        df = pd.read_csv(csv_file)
+        rows = df.iterrows()  # Iterate over rows
+
+        for index, row in rows:
+            logger.info(f'Row {index}: {row}')
+    except FileNotFoundError:
+        logger.error(f"File '{csv_file}' not found.")
+    except Exception as e:
+        logger.error(f"An error occurred: {e}")
+
 
 
 if __name__ == "__main__":
