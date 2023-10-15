@@ -2,8 +2,8 @@ import requests
 import sys
 
 
-def create_issue(url, payload, headers):
-    response = requests.post(url, json=payload, headers=headers)
+def create_issue(url, payload, headers, files=None):
+    response = requests.post(url, json=payload, headers=headers, files=files)
 
     if response.status_code == 201:
         print("Comment posted successfully!")
@@ -39,9 +39,22 @@ def main():
     }
 
     payload_class = issue_data('class')
-    create_issue(url, payload_class, headers)
+    #create_issue(url, payload_class, headers)
+    try:
+        csv_file_path = 'classes_results.csv'
+        files={'csv_attachment': (csv_file_path, open(csv_file_path, 'rb'))}
+    except:
+        files=None
+    create_issue(url, payload_class, headers, files=files )
+
     payload_method = issue_data('method')
-    create_issue(url, payload_method, headers)
+    #create_issue(url, payload_method, headers)
+    try:
+        csv_file_path = 'methods_results.csv'
+        files={'csv_attachment': (csv_file_path, open(csv_file_path, 'rb'))}
+    except:
+        files=None
+    create_issue(url, payload_method, headers, files=files )
 
 
 if __name__ == "__main__":

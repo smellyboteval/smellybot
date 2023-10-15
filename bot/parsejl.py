@@ -127,17 +127,34 @@ def extractFromProject(projname, _extclass=True, _extrmethod=True):
     all_classes = all_classes.rename(columns={'Class Code': 'Code'})
     all_methods = all_methods.rename(columns={'Method Code': 'Code'})
 
-    saveToFile(all_classes[['Project', 'File', 'Class', 'Code']], 'classes', projname)
-    saveToFile(all_methods[['Project', 'File', 'Method', 'Code']], 'methods', projname)
+    saveToFile(all_classes[['Project', 'File', 'Class', 'Code']], 'classes', projname, 3500)
+    saveToFile(all_methods[['Project', 'File', 'Method', 'Code']], 'methods', projname, 10000)
 
 # def saveToFile(listOfObjs, typeOfObj, projname):
     #file_name = f'{projname}_{typeOfObj}.csv'
     #listOfObjs.to_csv(file_name, index=False)
 
-def saveToFile (listOfObjs, typeOfObj, projname, mode='w', header=True): 
+#def saveToFile (listOfObjs, typeOfObj, projname, mode='w', header=True): 
+#    listOfObjs['Code'].replace('', np.nan, inplace=True)
+#    listOfObjs = listOfObjs.dropna(subset=['Code']).reset_index(drop=True)
+#    listOfObjs.to_csv(projname.split('/')[-1]+ "_" +typeOfObj + ".csv",  mode=mode, header=header)
+
+def saveToFile(listOfObjs, typeOfObj, projname, max_rows, mode='w', header=True):
     listOfObjs['Code'].replace('', np.nan, inplace=True)
     listOfObjs = listOfObjs.dropna(subset=['Code']).reset_index(drop=True)
-    listOfObjs.to_csv(projname.split('/')[-1]+ "_" +typeOfObj + ".csv",  mode=mode, header=header)
+
+    # Calculate the number of files needed
+    num_files = len(listOfObjs) // max_rows + 1
+
+    # Split the DataFrame into chunks
+    chunks = np.array_split(listOfObjs, num_files)
+
+    for i, chunk in enumerate(chunks):
+        # Generate a unique filename for each chunk
+        filename = f"{projname.split('/')[-1]}_{typeOfObj}_{i + 1}.csv"
+        
+        # Save the chunk as a CSV file
+        chunk.to_csv(filename, mode=mode, header=header)
 
 if __name__ == "__main__":
     projname = 'data' ## change to data in bot
