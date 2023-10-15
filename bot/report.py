@@ -75,7 +75,7 @@ def main():
     logger_file_handler.setFormatter(formatter)
     logger.addHandler(logger_file_handler)
 
-    # Read the CSV file
+    # Read the CSV fileioiu
     csv_file = 'class_results.csv'
     try:
         df = pd.read_csv(csv_file)
