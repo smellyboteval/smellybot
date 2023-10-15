@@ -36,10 +36,7 @@ jobs:
 
       - name: Detect Code Smells class-level
         run: |
-          python bot/detectc.py 
-      - name: Detect Code Smells method-level
-        run: |
-          python bot/detectm.py 
+          python bot/detect.py 
       
       - name: Create Issue on Push
         run: |
