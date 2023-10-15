@@ -66,7 +66,7 @@ def save_report(reportdf, smellytype):
         reportdf = reportdf.loc[(reportdf['isFE'] == 1) | (reportdf['isLM'] == 1)]
         markdown_table = reportdf[['File', 'Method', 'isFE', 'isLM']].to_markdown(index=False)
 
-        # Save Markdown table with statistics to a txt filekk
+        # Save Markdown table with statistics to a txt file
         with open(smellytype + '_smelly_report.md', 'w') as f:
             f.write(f"Number of non-smelly methods (Feature Envy): {num_nonsmelly_fe}\n")
             f.write(f"Number of smelly methods (Feature Envy): {num_smelly_fe}\n")
