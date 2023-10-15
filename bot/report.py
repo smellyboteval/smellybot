@@ -43,7 +43,7 @@ def main():
     payload_class = issue_data('class')
     #create_issue(url, payload_class, headers)
     try:
-        csv_file_path = 'class_results.csv'
+        csv_file_path = 'class_results.txt'
         files={'csv_attachment': (csv_file_path, open(csv_file_path, 'rb'))}
     except:
         files=None
@@ -52,7 +52,7 @@ def main():
     payload_method = issue_data('method')
     #create_issue(url, payload_method, headers)
     try:
-        csv_file_path = 'method_results.csv'
+        csv_file_path = 'method_results.txt'
         files={'csv_attachment': (csv_file_path, open(csv_file_path, 'rb'))}
     except:
         files=None
