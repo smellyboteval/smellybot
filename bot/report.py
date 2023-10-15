@@ -72,11 +72,11 @@ def main():
 
     payload_class = issue_data('class')
     create_issue(url, payload_class, headers)
-    log_file('class_results.csv', "smelly_classes.log")
+    #log_file('class_report.csv', "smelly_classes.log")
 
     payload_method = issue_data('method')
     create_issue(url, payload_method, headers)
-    log_file('method_results.csv', "smelly_methods.log")
+    #log_file('method_report.csv', "smelly_methods.log")
 
 
 
