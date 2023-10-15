@@ -128,7 +128,7 @@ def extractFromProject(projname, _extclass=True, _extrmethod=True):
     all_methods = all_methods.rename(columns={'Method Code': 'Code'})
 
     saveToFile(all_classes[['Project', 'File', 'Class', 'Code']], 'classes', projname, 3500)
-    saveToFile(all_methods[['Project', 'File', 'Method', 'Code']], 'methods', projname, 10000)
+    saveToFile(all_methods[['Project', 'File', 'Method', 'Code']], 'methods', projname, 5000)
 
 # def saveToFile(listOfObjs, typeOfObj, projname):
     #file_name = f'{projname}_{typeOfObj}.csv'

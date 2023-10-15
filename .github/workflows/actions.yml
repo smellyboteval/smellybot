@@ -34,7 +34,7 @@ jobs:
         run: |
           python bot/parsejl.py 
 
-      - name: Detect Code Smells class-level
+      - name: Detect Code Smells
         run: |
           python bot/detect.py 
       
