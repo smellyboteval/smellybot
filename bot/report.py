@@ -8,7 +8,7 @@ def create_issue(url, payload, headers, files=None):
     if response.status_code == 201:
         print("Comment posted successfully!")
     else:
-        print("Failed to post comment.")
+        print("Failed to post comment.", response)
 
 
 def issue_data(smellytype):
