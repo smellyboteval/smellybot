@@ -5,6 +5,7 @@ import requests
 import os
 import pandas as pd
 import re
+import time
 
 
 classes_file = os.path.join('data_classes.csv') #'bot\data_classes.csv'
@@ -113,6 +114,8 @@ def main():
             methods_df['is'+ key] = list(result.values())[0]
             methods_df['is'+ key] = methods_df['is'+ key].astype(int) 
         #print(methods_df)
+
+        time.sleep(2)
 
     #print(classes_df)
     
