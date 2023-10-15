@@ -8,6 +8,9 @@ on:
 jobs:
   comment:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      push: write
 
     steps:
       - name: Checkout code
