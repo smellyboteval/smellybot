@@ -34,7 +34,7 @@ def issue_data(smellytype):
 
 def main():
     repo =  sys.argv[1] 
-    token = sys.argv[2]  # token uilyu yutdyu
+    token = sys.argv[2]  # token uilyu 
 
     # Create a new issue
     url = f"https://api.github.com/repos/{repo}/issues"
