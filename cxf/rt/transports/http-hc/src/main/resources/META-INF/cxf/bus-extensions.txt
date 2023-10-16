@@ -1,2 +1,0 @@
-org.apache.cxf.transport.http.asyncclient.AsyncHTTPConduitFactory:org.apache.cxf.transport.http.HTTPConduitFactory:true
-
