@@ -1,7 +1,0 @@
-{
-  "@odata.context": "http://localhost:${tomcat.servlet.port}/stub/StaticService/V40/Static.svc/$metadata#VipCustomers/$entity",
-  "@odata.type": "#Microsoft.Test.OData.Services.ODataWCFService.Customer",
-  "@odata.id": "http://localhost:${tomcat.servlet.port}/stub/StaticService/V40/Static.svc/VipCustomers(PersonID=1)",
-  "@odata.editLink": "http://localhost:${tomcat.servlet.port}/stub/StaticService/V40/Static.svc/VipCustomers(PersonID=1)",
-  "PersonID": 1
-}

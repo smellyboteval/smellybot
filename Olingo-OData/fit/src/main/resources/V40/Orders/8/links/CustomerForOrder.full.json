@@ -1,4 +1,0 @@
-{
-  "odata.metadata": "http://localhost:${tomcat.servlet.port}/stub/StaticService/V40/Static.svc/$metadata#Orders/$links/CustomerForOrder",
-  "url": "http://localhost:${tomcat.servlet.port}/stub/StaticService/V40/Static.svc/Customers(1)"
-}

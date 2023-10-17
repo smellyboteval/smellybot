@@ -1,8 +1,0 @@
-{
-  "@odata.context": "http://localhost:${tomcat.servlet.port}/stub/StaticService/V40/Static.svc/$metadata#$ref",
-  "value":
-          [
-            {"@odata.id": "http://localhost:${tomcat.servlet.port}/stub/StaticService/V40/Static.svc/Orders(7)"},
-            {"@odata.id": "http://localhost:${tomcat.servlet.port}/stub/StaticService/V40/Static.svc/Orders(8)"}
-          ]
-}
