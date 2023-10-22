@@ -13,8 +13,8 @@
 ### Step2: Add a project to the repository and Push changes
 1. Add your Java project or use the 'src-test' project 
 2. Push the changes
-    A. From CMD:
+    - A. From CMD:
         1. `git add .`
         2. `git commit -m 'add a comment'`
         3. `git push`
-    B. Upload directly to the GitHub repository
+    - B. Upload directly to the GitHub repository
