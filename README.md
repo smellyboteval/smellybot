@@ -28,3 +28,8 @@
     1. `git add .`
     2. `git commit -m 'add a comment'`
     3. `git push`
+
+### Step3: View reports and issues
+1. Refresh the page, check any new files
+2. Go to issues, view created issues
+3. Go to Actions and view the status of the workflow
