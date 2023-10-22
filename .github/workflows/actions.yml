@@ -3,7 +3,7 @@ name: Create Issue on Push
 on:
   push: 
     branches: 
-      - main
+      - '*'
 
 permissions: write-all
 
@@ -44,7 +44,7 @@ jobs:
         run: |
           python bot/report.py ${{ github.repository }} ${{ steps.generate_token.outputs.token }}
       
-      - name: commit files
+      - name: Commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -53,7 +53,7 @@ jobs:
             git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
           fi
           
-      - name: push changes
+      - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
