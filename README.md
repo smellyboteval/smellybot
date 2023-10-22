@@ -12,17 +12,21 @@
 2. Creat a new branch by your name or neckname
     1. Click on branches
     ![Screenshot](figs/branches.PNG)
-    2. New branch
+
+    2. Create new branch (use your name or nickname)
     ![Screenshot](figs/new_branch.PNG)
 
 ### Step2: Add a project to the fork/branch repository 
 - A. Add your Java project or use the 'src-test' project 
     1. Make sure you select the branch you created 
     ![Screenshot](figs/select_branch.PNG)
+
     2. Click Add file >> Upload files
     ![Screenshot](figs/upload_files.PNG)
-    3. Commit the changes
+
+    3. Commit the changes to your branch
     ![Screenshot](figs/commit.PNG)
+
 
 - B. From CMD:
     1. `git add .`
@@ -31,5 +35,5 @@
 
 ### Step3: View reports and issues
 1. Refresh the page, check any new files
-2. Go to issues, view created issues
-3. Go to Actions and view the status of the workflow
+2. Go to Issues tap and view created issues
+3. Go to Actions tap and view the status of the workflow
