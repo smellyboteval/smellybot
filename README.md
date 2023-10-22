@@ -1,8 +1,8 @@
 # Smellybot
 
 ### Step1 A: Install the bot
-1. Fork the smellybot repository to your account: https://github.com/amalazba/smellybot
-2. Install the Github app named Smelly-Bot into the forked repository (ONLY): https://github.com/apps/smelly-bot
+1. Fork the [Smellybot](https://github.com/amalazba/smellybot) repository to your account
+2. Install the Github app named Smelly-Bot into the forked repository (ONLY) from [here](https://github.com/apps/smelly-bot)
 3. Add two Actions secrets APP_ID and APP_PRIVATE_KEY, use the values in secrets.txt file: repo Settings >> Secrets and variables >> actions >> New repository secret
 4. Make sure the Issues tap is available, to enable: repo Settings >> General >> Features >> issues
 5. Enable GitHub Actions: Go to Actions tap >> click on "I understand my workflows, go ahead and enable them"
@@ -17,7 +17,7 @@
     ![Screenshot](figs/new_branch.PNG)
 
 ### Step2: Add a project to the fork/branch repository 
-- A. Add your Java project or use the 'src-test' project 
+- A. Add your Java project or download a sample project from [here](https://github.com/amalazba/src-test)
     1. Make sure you select the branch you created 
     ![Screenshot](figs/select_branch.PNG)
 
