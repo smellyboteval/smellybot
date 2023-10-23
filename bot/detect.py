@@ -47,13 +47,13 @@ def save_report(reportdf, smellytype):
         markdown_table = reportdf[['File', 'Class', 'isDC', 'isGC']].to_markdown(index=False)
 
         # Save Markdown table with statistics to a txt file
-        with open(smellytype + '_smelly_report.md', 'w') as f:
-            f.write(f"Number of non-smelly classes (Data Class): {num_nonsmelly_dc}\n")
-            f.write(f"Number of smelly classes (Data Class): {num_smelly_dc}\n")
-            f.write(f"Number of non-smelly classes (God Class): {num_nonsmelly_gc}\n")
-            f.write(f"Number of smelly classes (God Class): {num_smelly_gc}\n\n")
-            if((num_smelly_dc+num_smelly_gc) > 0):
-                reportdf.to_csv(smellytype + '_report.csv',  index=False)
+        #with open(smellytype + '_smelly_report.md', 'w') as f:
+        #    f.write(f"Number of non-smelly classes (Data Class): {num_nonsmelly_dc}\n")
+        #    f.write(f"Number of smelly classes (Data Class): {num_smelly_dc}\n")
+        #    f.write(f"Number of non-smelly classes (God Class): {num_nonsmelly_gc}\n")
+        #    f.write(f"Number of smelly classes (God Class): {num_smelly_gc}\n\n")
+        if((num_smelly_dc+num_smelly_gc) > 0):
+            reportdf.to_csv('Smellybot_report_' + smellytype + '_level.csv',  index=False)
                 #f.write(markdown_table)
 
     elif smellytype == 'method':
@@ -66,14 +66,40 @@ def save_report(reportdf, smellytype):
         markdown_table = reportdf[['File', 'Method', 'isFE', 'isLM']].to_markdown(index=False)
 
         # Save Markdown table with statistics to a txt file
-        with open(smellytype + '_smelly_report.md', 'w') as f:
-            f.write(f"Number of non-smelly methods (Feature Envy): {num_nonsmelly_fe}\n")
-            f.write(f"Number of smelly methods (Feature Envy): {num_smelly_fe}\n")
-            f.write(f"Number of non-smelly methods (Long Method): {num_nonsmelly_lm}\n")
-            f.write(f"Number of smelly methods (Long Method): {num_smelly_lm}\n\n")
-            if((num_smelly_fe+num_smelly_lm) > 0):
-                reportdf.to_csv(smellytype + '_report.csv',  index=False)
+        #with open(smellytype + '_smelly_report.md', 'w') as f:
+        #    f.write(f"Number of non-smelly methods (Feature Envy): {num_nonsmelly_fe}\n")
+        #    f.write(f"Number of smelly methods (Feature Envy): {num_smelly_fe}\n")
+        #    f.write(f"Number of non-smelly methods (Long Method): {num_nonsmelly_lm}\n")
+        #    f.write(f"Number of smelly methods (Long Method): {num_smelly_lm}\n\n")
+        if((num_smelly_fe+num_smelly_lm) > 0):
+            reportdf.to_csv('Smellybot_report_' + smellytype + '_level.csv',  index=False)
                 #f.write(markdown_table)
+
+
+def create_summary_report(class_report, method_report):
+
+    num_nonsmelly_dc = (class_report['isDC'] == 0).sum()
+    num_smelly_dc = (class_report['isDC'] == 1).sum()
+    num_nonsmelly_gc = (class_report['isGC'] == 0).sum()
+    num_smelly_gc = (class_report['isGC'] == 1).sum()
+
+    num_nonsmelly_fe = (method_report['isFE'] == 0).sum()
+    num_smelly_fe = (method_report['isFE'] == 1).sum()
+    num_nonsmelly_lm = (method_report['isLM'] == 0).sum()
+    num_smelly_lm = (method_report['isLM'] == 1).sum()
+    
+    # Create a summary report DataFrame
+    data = {
+        'Code Smell Type': ['Data Class', 'God Class', 'Feature Envy', 'Long Method'],
+        'Smelly': [num_smelly_dc, num_smelly_gc, num_smelly_fe, num_smelly_lm],
+        'Non-Smelly': [num_nonsmelly_dc, num_nonsmelly_gc, num_nonsmelly_fe, num_nonsmelly_lm]
+    }
+
+    summary_report = pd.DataFrame(data)
+
+    # Save the summary report as a Markdown file
+    with open('summary_report.md', 'w') as f:
+        f.write(summary_report.to_markdown(index=False))
 
 
 
@@ -153,6 +179,7 @@ def main():
 
     save_report(classes_df[['File', 'Class', 'isDC', 'isGC']], 'class')
     save_report(methods_df[['File', 'Method', 'isFE', 'isLM']], 'method')
+    create_summary_report(classes_df[['File', 'Class', 'isDC', 'isGC']], methods_df[['File', 'Method', 'isFE', 'isLM']])
 
 
 if __name__ == "__main__":

@@ -42,14 +42,13 @@ jobs:
 
       - name: Create Issue on Push
         run: |
-          python bot/report.py ${{ github.repository }} ${{ steps.generate_token.outputs.token }}
-      
+          python bot/report.py ${{ github.repository }} ${{ steps.generate_token.outputs.token }} ${{ github.repository_owner }} ${{ github.ref }}
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          if [ -e "class_report.csv" ] || [ -e "method_report.csv" ]; then
-            git add class_report.csv method_report.csv
+          if [ -e "Smellybot_report_class_level.csv" ] || [ -e "Smellybot_report_method_level.csv" ]; then
+            git add Smellybot_report_class_level.csv Smellybot_report_method_level.csv
             git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
           fi
           
@@ -57,4 +56,4 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main 
+          branch: ${{ github.ref }}  
