@@ -21,8 +21,12 @@ def issue_data(repo, owner, branch):
 
     # Read content from report.md
     #with open(smellytype+'_smelly_report.md', 'r') as f:
-    with open('summary_report.md', 'r') as f:
-        report = f.read()
+    try:
+        with open('summary_report.md', 'r') as f:
+            report = f.read()
+    except Exception as e:
+        print("Error reading summary report")
+        report = "No code smells has been detected."
 
     # Issue data
     table_content = f'{report}'
