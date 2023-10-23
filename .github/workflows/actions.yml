@@ -42,7 +42,7 @@ jobs:
 
       - name: Create Issue on Push
         run: |
-          python bot/report.py ${{ github.repository }} ${{ steps.generate_token.outputs.token }} ${{ github.repository_owner }} ${{ github.ref }}
+          python bot/report.py ${{ github.repository }} ${{ steps.generate_token.outputs.token }} ${{ github.ref }}
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
