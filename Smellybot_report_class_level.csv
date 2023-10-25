@@ -1,0 +1,4 @@
+File,Class,isDC,isGC
+KafkaBoltTest,KafkaBoltTest,1,0
+src-test-main.NullRecordTranslator,NullRecordTranslator,1,0
+src-test-main.bolt.KafkaBoltTest,KafkaBoltTest,1,0
