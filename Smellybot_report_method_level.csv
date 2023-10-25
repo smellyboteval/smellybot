@@ -1,0 +1,44 @@
+File,Method,isFE,isLM
+KafkaUnitRule,before,1,0
+KafkaUnitRule,after,1,0
+KafkaUnitRule,getKafkaUnit,1,0
+NullRecordTranslator,apply,1,0
+NullRecordTranslator,getFieldsFor,1,1
+NullRecordTranslator,streams,1,0
+KafkaUnit copy,setUp,1,0
+KafkaUnit copy,tearDown,1,0
+KafkaUnit copy,createTopic,1,1
+KafkaUnit copy,getKafkaPort,1,0
+KafkaUnit copy,createProducer,1,0
+KafkaUnit copy,sendMessage,1,0
+KafkaUnit copy,closeProducer,1,0
+KafkaUnit,setUp,1,0
+KafkaUnit,tearDown,1,0
+KafkaUnit,createTopic,1,1
+KafkaUnit,getKafkaPort,1,0
+KafkaUnit,createProducer,1,0
+KafkaUnit,sendMessage,1,0
+KafkaUnit,closeProducer,1,0
+src-test-main.KafkaUnitRule,before,1,0
+src-test-main.KafkaUnitRule,after,1,0
+src-test-main.KafkaUnitRule,getKafkaUnit,1,0
+src-test-main.NullRecordTranslator,apply,1,0
+src-test-main.NullRecordTranslator,getFieldsFor,1,1
+src-test-main.NullRecordTranslator,streams,1,0
+src-test-main.KafkaUnit copy,setUp,1,0
+src-test-main.KafkaUnit copy,tearDown,1,0
+src-test-main.KafkaUnit copy,createTopic,1,1
+src-test-main.KafkaUnit copy,getKafkaPort,1,0
+src-test-main.KafkaUnit copy,createProducer,1,0
+src-test-main.KafkaUnit copy,sendMessage,1,0
+src-test-main.KafkaUnit copy,closeProducer,1,0
+src-test-main.KafkaUnit,setUp,1,0
+src-test-main.KafkaUnit,tearDown,1,0
+src-test-main.KafkaUnit,createTopic,1,1
+src-test-main.KafkaUnit,getKafkaPort,1,0
+src-test-main.KafkaUnit,createProducer,1,0
+src-test-main.KafkaUnit,sendMessage,1,0
+src-test-main.KafkaUnit,closeProducer,1,0
+src-test-main.bolt.KafkaBoltTest,answer,1,0
+src-test-main.bolt.KafkaBoltTest,mkProducer,1,0
+src-test-main.bolt.KafkaBoltTest,matches,1,0
