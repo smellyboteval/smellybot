@@ -1,0 +1,7 @@
+File,Class,isDC,isGC
+HyperVecLearning,HyperVecLearning,1,1
+IOUtils,IOUtils,0,1
+WordForm,WordForm,1,0
+Vocab,Vocab,1,1
+HuffmanTree,HuffmanTree,0,1
+VocabEntry,VocabEntry,1,0
