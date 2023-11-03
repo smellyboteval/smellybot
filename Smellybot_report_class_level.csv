@@ -1,0 +1,4 @@
+File,Class,isDC,isGC
+ChartFactory,ChartFactory,0,1
+ChartRenderingInfo,ChartRenderingInfo,0,1
+api.RectangleInsets,RectangleInsets,0,1

@@ -1,0 +1,12 @@
+File,Method,isFE,isLM
+ChartRenderingInfo,clone,0,1
+ChartRenderingInfo,writeObject,0,1
+ChartRenderingInfo,readObject,1,1
+api.RectangleInsets,toString,0,1
+api.RectangleInsets,createAdjustedRectangle,0,1
+api.RectangleInsets,createInsetRectangle,0,1
+api.RectangleInsets,createOutsetRectangle,0,1
+api.RectangleInsets,calculateTopInset,0,1
+api.RectangleInsets,calculateBottomInset,0,1
+api.RectangleInsets,calculateLeftInset,0,1
+api.RectangleInsets,trim,0,1
