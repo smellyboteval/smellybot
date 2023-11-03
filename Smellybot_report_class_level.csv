@@ -1,0 +1,6 @@
+File,Class,isDC,isGC
+src.main.java.UserInterface.TimeLiner,TimeLiner,1,1
+src.main.java.UserInterface.ProjectListBox,ProjectListBox,1,0
+src.main.java.SWE316_HW.SWE316_HW.ExcelReader,ExcelReader,0,1
+src.main.java.SWE316_HW.SWE316_HW.App,App,1,0
+src.main.java.SWE316_HW.SWE316_HW.ProjectStage,ProjectStage,0,1
