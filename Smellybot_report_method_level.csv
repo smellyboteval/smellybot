@@ -1,0 +1,10 @@
+File,Method,isFE,isLM
+massad.CruiseDisplay,backdrop,1,0
+massad.CruiseDisplay,update,1,0
+massad.CruiseDisplay,drawRecorded,1,1
+massad.CarSimulator,backdrop,1,0
+massad.CarSimulator,update,1,0
+massad.CarSimulator,drawControl,1,0
+massad.CarSimulator,drawMark,0,1
+massad.CarSimulator,drawOdo,1,1
+massad.CruiseControl,init,0,1

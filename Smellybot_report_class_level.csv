@@ -1,0 +1,6 @@
+File,Class,isDC,isGC
+massad.CruiseControlTest,CruiseControlTest,0,1
+massad.CruiseDisplay,CruiseDisplay,0,1
+massad.CarSimulator,CarSimulator,1,1
+massad.CruiseControl,CruiseControl,0,1
+massad.Controller,Controller,1,0
