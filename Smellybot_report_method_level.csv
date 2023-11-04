@@ -1,0 +1,14 @@
+File,Method,isFE,isLM
+pages.CompetitionController,visitWebsite,0,1
+pages.CompetitionController,delete,1,1
+pages.CompetitionController,fillContent,0,1
+pages.WebsiteController,navigateBack,1,1
+pages.WebsiteController,showWebsite,1,0
+pages.LoginController,login,0,1
+pages.LoginController,logger,1,1
+pages.LoginController,authenticate,1,1
+pages.MainController,initialize,1,1
+models.Competition,compareTo,0,1
+models.Competition,toString,1,0
+models.Student,toString,0,1
+models.Team,compareTo,1,0

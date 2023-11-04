@@ -1,0 +1,7 @@
+File,Class,isDC,isGC
+pages.CompetitionController,CompetitionController,1,1
+pages.WebsiteController,WebsiteController,1,0
+pages.LoginController,LoginController,1,0
+pages.MainController,MainController,1,0
+models.Competition,Competition,0,1
+models.Team,Team,1,0
