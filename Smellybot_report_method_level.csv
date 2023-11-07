@@ -1,0 +1,4 @@
+File,Method,isFE,isLM
+KafkaUnit copy,createTopic,0,1
+KafkaUnit,createTopic,0,1
+NullRecordTranslator,getFieldsFor,0,1
