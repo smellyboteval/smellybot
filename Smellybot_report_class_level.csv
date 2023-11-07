@@ -1,0 +1,8 @@
+File,Class,isDC,isGC
+Online-Cab-Booking-System.src.service.customer.CustomerService,CustomerService,0,1
+Online-Cab-Booking-System.src.dao.customer.CustomerDao,CustomerDao,0,1
+Online-Cab-Booking-System.src.controller.Logincontroller,Logincontroller,1,1
+Online-Cab-Booking-System.src.controller.administrator.RouteController,RouteController,1,1
+Online-Cab-Booking-System.src.controller.administrator.DriverController,DriverController,1,1
+Online-Cab-Booking-System.src.controller.administrator.VehicleController,VehicleController,1,1
+Online-Cab-Booking-System.src.controller.customer.CustomerController,CustomerController,1,1
